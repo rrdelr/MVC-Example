@@ -15,12 +15,17 @@ class Users():
 
     @classmethod
     def get_users(self):
-        with open(self.file, 'r', newline='') as csvfile:
-            reader = csv.reader(csvfile)
-            for item in reader:
-                if item not in self.Collection:
-                    self.Collection.append(item)
-        return self.Collection
+        try:
+            with open(self.file, 'r+', newline='') as csvfile:
+                reader = csv.reader(csvfile)
+                for item in reader:
+                    if item not in self.Collection:
+                        self.Collection.append(item)
+            return self.Collection
+        except:
+            with open(self.file, "w+") as csvfile:
+                pass
+            return []
 
     @classmethod
     def remove_user(self, name, email):
