@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="tile is-ancestor has-background-primary	">
+  <div class="tile is-8">
+    <div class="tile is-parent">
+      <article class="tile is-child">
+        <p class="title">Registry</p>
+        <div class="content">
+          <table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+  </thead>
+    {% for row in list_data %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child">
+      <div class="content">
+        <div class="content">
+          <h3 class="title">Modify Database</h3>
+    <div class="box">
+        <form method="POST" action="/">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="name" name="name" placeholder="Name">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth" type="submit" name="submit_add"
+                    value="submit_add">Add</button>
+            <br>
+            <button class="button is-block is-info is-large is-fullwidth" type="submit" name="submit_del"
+                    value="submit_del">Delete</button>
+        </form>
+    </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+{% endblock %}
